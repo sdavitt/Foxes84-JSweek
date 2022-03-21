@@ -236,3 +236,262 @@ console.log(test7, typeof test7);
 // in javascript, if we do something wrong, we get 4 + true = 5
 // or undefined + [] is like true or something? there's a lot of weird ones out there
 // https://www.youtube.com/watch?v=et8xNAc2ic8
+
+console.log('\n\nFunctions:')
+/*
+JavaScript Functions
+- serve much the same purpose and strucutre as python functions
+    - we give a name to a process that accepts some input and gives some output
+    - we can use that name with whatever input to perform that process
+*/
+
+// regular named function with the function keyword
+// input parenthesis just like python, curly brackets controlling code block instead of indentation and a colon
+function helloWorld(){
+    return 'Hello, Foxes!'
+};
+
+//calling that function
+let returned_value = helloWorld();
+console.log(returned_value);
+
+// named function using a variable name
+let helloName = function(n){
+    return 'Hello, ' + n + '!'
+};
+let returned_value2 = helloName('Devon'); // note: not providing proper input for your function may not produce an error in JS
+console.log(returned_value2);
+
+// my preffered method for writing functions in JS
+// ES6 Arrow Function
+// let <funcName> = (<inputs>) => { <code> }
+// taking the same helloName function and rewriting as an ES6 arrow function:
+let helloNameArrow = n => {
+    return 'Hello, ' + n + '!'
+};
+
+let returned_value3 = helloNameArrow('Devon');
+console.log(returned_value3);
+
+// when using no parameters with an arrow function:
+let helloWorldArrow = () => {
+    return 'Hello, Foxes!'
+};
+// when using more than one parameter with an arrow function, the () before the arrow are necessary
+// when using one and only one parameter with an arrow function, the () become optional (see above)
+
+// What is a self-invoking function? A type of anonymous function (it has no name)
+// A function that calls itself when it is defined
+// a function call where we put the function definition where the name of the function being called would usually go
+(function(n){return 'Hello, ' + n + '!'})('Joel');
+
+console.log('\n\nConditionals/Control Flow:');
+// JavaScript conditionals and the way we use them are the same conceptually as python conditionals
+// the concepts and flow of if statements, elif statements, and else statements are all the same
+// only difference is the syntax
+/*
+if (condition)
+    { code to run } 
+else if (condition)
+    { code to run } 
+else
+    { code to run }
+*/
+let age = 37
+if (age < 18) {
+    console.log('Child')
+} else if (age < 65) {
+    console.log('Adult')
+} else {
+    console.log('Senior')
+}
+
+// most operators (<, >, >=, <=) are the same
+// some operators are different
+    // combining conditionals:
+        // python 'and' becomes && in javascript
+        // python 'or' becomes || in javascript
+let color = 'blue';
+if (color == 'blue'){
+    if(color != 'green'){
+        console.log(color);
+    }
+}
+// the 'in' operator for membership tests only works for arrays/objects aka python lists/dictionaries
+// == in javascript is not the same as == in python!!
+console.log('4' == 4); // string 4 equals number 4?
+// true!
+// == in python tests for equality of value and type
+// == in javascript tests only for equality of value NOT for equality of type
+// hence '4' the string and 4 the number have the same value so == comes back true in JS
+
+// what is the equivalent to Python's == in JavaScript?
+// ===
+// triple equals in JavaScript tests for equality of value AND type
+console.log('4' === 4); // false -> equal value, not equal type
+
+// JavaScript conditional shorthand
+// ... theres always another way to do something in JS
+// the JS Ternary Operator is a shorthand way of writing conditional structures
+/*
+conditional1 ? code to run1 : conditional2 ? code to run2 : code to run3
+
+would be shorthand using the ternary operator for the following:
+if (conditional1){
+    code to run1
+} else if (conditional2){
+    code to run2
+} else {
+    code to run3
+}
+*/
+let age2 = 37;
+age2 < 18 ? console.log('Child') : age2 < 65 ? console.log('Adult') : console.log('Senior')
+
+// null in JS is the same as None in Python
+// an intentionally assigned value meanining nothing
+let noneequiv = null;
+let undefinedvar;
+console.log(noneequiv);
+console.log(undefinedvar);
+console.log(noneequiv === undefinedvar);
+
+// Looping in JS
+console.log('\n\nLoops:');
+// most common loop type - for loop through the indexes of an array or string
+// for loop syntax:
+// for (<pointer variable>; <conditional>; <step>){ code to run at each step }
+// many people view this syntax as more similar to a python while loop
+let mystring = 'Fennec Fox';
+// loop thru the letters in mystring
+// mystring.length is the equivalent to python's len(mystring)
+// i++ is the same as python's i+=1 or i=i+1
+for (let i = 0; i<mystring.length; i++){
+    console.log(mystring[i]); // indexing into our string just like python
+}
+
+// a loop through number 1 to 10 backwards aka 10, 9, 8, etc.
+for (let i = 10; i>0; i--){
+    console.log(i);
+}
+
+// while loop
+// looping based on a condition
+// when that condition is true, run another step of the loop
+// when the condition is false, end the loop
+console.log('\n\nWhile loop:')
+let n = 1;
+while (n<11){
+    console.log(n);
+    n++;
+}
+
+// can we still nest loops?
+// of course!
+let teststring = 'abc';
+for (let i = 0; i<teststring.length; i++){
+    for (let j = 1; j < 4; j++){
+        console.log(teststring[i], j);
+    }
+};
+
+console.log('\n\nDo-while:')
+// The Do-While loop
+// the do-while loop is an alternative to a while loop
+// that will always run at least once regardless of its condition
+// normal while loop - can do zero steps
+while (false){
+    console.log('no steps taken');
+};
+// essentially all a do-while loop is doing
+// is changing the location of the conditional check
+// to determine if the loop runs
+// traditional while loop: check condition -> run code
+// do while loop: run code -> check condition
+do {
+    console.log('at least one step taken');
+} while (false);
+
+console.log('\n\nArrays:');
+/* 
+JavaScript Arrays are the equivalent of Python's lists
+Arrays are ordered, indexed, and can contain any values/datatypes
+We can have an array of strings, an array of numbers, and array of other arrays
+or any combination of data in our array
+Accessing the values at an array index is much the same as a python list
+*/
+// declaring + defining an array
+let animals = ['Fennec Fox', 'Honey Badger', 'Echidna', 'Siberian Tiger'];
+// accessing the value at the 0th index:
+console.log(animals[0]);
+// redefining a value at an index:
+animals[1] = 'Giant Panda';
+console.log(animals[1]);
+
+// method 1 for looping through an array:
+// using indexes
+for (let i = 0; i<animals.length; i++){
+    console.log(i, animals[i]);
+}
+
+// method 2: while loop same thing
+let indexpointer = 0;
+while (indexpointer < animals.length){
+    console.log(indexpointer, animals[indexpointer]);
+    indexpointer++;
+}
+
+// adding and removing values from an array
+// Array.push() same thing as python's list.append()
+// adding to the end of the list
+console.log(animals);
+animals.push('Osprey');
+console.log(animals);
+
+// Array removal in javascript is more complicated
+// there is no direct removal by value
+// .pop() always removes the last element from the array
+console.log(animals);
+animals.pop()
+console.log(animals);
+
+// index-based removal (similar to specifying an index in python's list.pop(index))
+// is done through JS's Array.splice() method
+// splice can take up 3 arguments
+// Array.splice(<starting index>, <number of values to remove>, <replacement values>)
+// using splice to remove 'Echidna' from our array
+console.log('\nSplice:');
+console.log(animals);
+animals.splice(2, 1)
+console.log(animals);
+
+// using splice to remove both 'Giant Panda' and 'Siberian Tiger'
+console.log(animals);
+animals.splice(1, 2)
+console.log(animals);
+
+console.log('\n\nValue-based removal:')
+// JS equivalent to .remove() -> must write your own loop (something Python's remove does itself)
+// write a loop through the array to find the value
+// then do a splice for index-based removal
+animals = ['Fennec Fox', 'Honey Badger', 'Echidna', 'Siberian Tiger'];
+console.log(animals);
+for (let i = 0; i<animals.length; i++){
+    if (animals[i] === 'Honey Badger'){
+        animals.splice(i, 1);
+        break; // same as python's break
+    }
+};
+console.log(animals);
+
+// 3 approaches to removal:
+// removal from end: Array.pop()
+// index-based removal: Array.splice(<index>, 1)
+// value-based removal: loop with a conditional into splice
+
+// another looping method - some people like this one, I personally don't
+// Array.forEach(<callback function>)
+// allows you to define a callback function to run on each item in the array
+// * not dissimilar to python's map() function or JS's map() function for that matter
+console.log('\n\nforEach:')
+animals.forEach((animal) => {console.log(animal+'!')});
