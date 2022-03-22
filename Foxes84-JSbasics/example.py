@@ -1,5 +1,8 @@
 # variable hoisting but make it python aka make it not work
 #print(hoisted_variable) # error - not defined here
+import colorsys
+
+
 hoisted_variable = 'Fennec Fox'
 print(hoisted_variable)
 
@@ -72,3 +75,35 @@ def nameInString(s, n):
     
 
 print(nameInString(dog_string, dog_names))
+
+
+# python custom object
+
+class Dog:
+    def __init__(self, name, breed, color, paws=4):
+        self.name = name
+        self.breed = breed
+        self.color = color
+        self.paws = paws
+
+    def printInfo(self):
+        print(f'{self.name} is a {self.breed} with {self.paws} paws. They are {self.color}.')
+
+a_dog = Dog('Sir Wesley Charles of Nottingham', 'English Springer Spaniel', 'black and white')
+a_dog.printInfo()
+
+# python inhertiance
+# Springer shares the attributes and methods of Dog but also has its own new attributes and methods
+class Springer(Dog):
+    def __init__(self, name, breed, color):
+        super().__init__(name, breed, color, paws=4)
+        self.jumps = 'high and often'
+        self.fast = 'fast'
+    
+    def zoom(self):
+        self.fast = 'very ' + self.fast
+
+a_springer = Springer('Tiger', 'English Springer Spaniel', 'liver and white')
+a_springer.printInfo()
+a_springer.zoom()
+print(a_springer.fast)

@@ -546,10 +546,3 @@ switch(animals[5]){
     default:
         console.log('I dont know this animal.');
 };
-
-
-console.log('\n\nArray Methods Cont:');
-/*
-An introduction to callback functions with:
-.map(), .filter(), .reduce()
-*/
