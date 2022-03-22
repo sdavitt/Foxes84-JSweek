@@ -52,3 +52,23 @@ print(animals)
 
 for animal in animals:
     print(animal)
+
+# hw exercise #1
+print('\n\n')
+
+#Write a function that takes in the string and the list of dog names, loops through 
+#the list and checks that the current name is in the string passed in. The output should be:
+#"Matched dog_name" if name is in the string, if no matches are present console.log "No Matches"
+#
+dog_string = "Hello Max, my name is Dog, and I have purple eyes!"
+dog_names = ["max","HAS","PuRple","dog"]
+
+
+def nameInString(s, n):
+    for name in n:
+        if name in s: # tricky for JS
+            return 'matched dog_name'
+    return 'no matches'
+    
+
+print(nameInString(dog_string, dog_names))

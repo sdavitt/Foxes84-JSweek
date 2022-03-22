@@ -493,5 +493,63 @@ console.log(animals);
 // Array.forEach(<callback function>)
 // allows you to define a callback function to run on each item in the array
 // * not dissimilar to python's map() function or JS's map() function for that matter
-console.log('\n\nforEach:')
+console.log('\n\nforEach:');
 animals.forEach((animal) => {console.log(animal+'!')});
+
+
+console.log('\n\nArray Methods:');
+animals.push('Platypus', 'Tibetan Fox', 'Chinchilla', 'Sea Otter'); // fun fact about array.push() is you can push multiple values at once unlike .append()
+/*
+.join(), .slice(), .search()
+*/
+// .slice() is just like python's list slicing [:] except we can't specify a step
+// the starting value is inclusive, the ending value is exclusive
+console.log(animals);
+console.log(animals.slice(3));
+console.log(animals.slice(0, 4));
+
+// .join() is just like python's join except the input order is flipped
+// convert from an array to a string
+// python: separator.join(list)
+// js: array.join(separator)
+let animals_string = animals.join(', ');
+console.log(animals_string, typeof animals_string);
+
+// .indexOf()
+// .indexOf() is like python's .index() function
+// searches for a value in an array, returns the index of that value or -1 if the value isn't present
+console.log(animals.indexOf('Chinchilla'));
+console.log(animals.indexOf('Red Panda'));
+
+// String.search()
+// searches the string for a substring or character
+// returns the starting index of the character/substring
+let strtosearch = 'Fennec Fox';
+console.log(strtosearch.search('Fox')); // 'Fox' starts at index 7 in 'Fennec Fox' so 7 is returned
+console.log(strtosearch.search('c'));
+
+// Another conditional structure:
+// switch case statement
+switch(animals[5]){
+    case 'Fennec Fox':
+        console.log('This is a Fennec Fox.');
+        break;
+    case 'Human':
+        console.log('This is a human.');
+        break;
+    case 'Penguin':
+        console.log('This is a penguin');
+        break;
+    case 'Chinchilla':
+        console.log('This is a chinchilla.');
+        break;
+    default:
+        console.log('I dont know this animal.');
+};
+
+
+console.log('\n\nArray Methods Cont:');
+/*
+An introduction to callback functions with:
+.map(), .filter(), .reduce()
+*/
