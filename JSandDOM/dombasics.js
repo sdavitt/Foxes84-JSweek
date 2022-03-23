@@ -61,3 +61,32 @@ new_button.addEventListener('mouseover', addText);
 // any selector that can select multiple elements will give you an HTMLCollection Array
 // and from there you can see dropdowns of all the potential attributes in the console
 console.log(document.getElementsByTagName('button'));
+
+
+// let's select our entire and add an event listener
+// we'll listen for the form to be submitted
+// function for form submission event:
+let formSubmit = (event) => {
+    // JS can't deal with a page refresh... tell this event not to do that
+    event.preventDefault();
+    console.log(event);
+    // access form data through the event - preffered way
+    let fname = event.path[0][0].value;
+    let lname = event.path[0][1].value;
+    console.log('form data: ', fname, lname);
+    /* alternative: access form data with a query selector
+    let fnameq = document.querySelector('#first-name').value;
+    let lnameq = document.querySelector('#last-name').value;
+    console.log('form data thru querySelector: ', fnameq, lnameq);
+    */
+   // reset form
+    form.reset();
+    // use that form data!
+    let new_html = document.createElement('h3');
+    new_html.innerHTML = fname + ' ' + lname
+    new_html.className = 'color-change2'
+    form.after(new_html);
+}
+
+let form = document.getElementById('nameForm');
+form.addEventListener('submit', formSubmit)
