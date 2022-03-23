@@ -57,3 +57,7 @@ let addText = () => {
 }
 
 new_button.addEventListener('mouseover', addText);
+
+// any selector that can select multiple elements will give you an HTMLCollection Array
+// and from there you can see dropdowns of all the potential attributes in the console
+console.log(document.getElementsByTagName('button'));
