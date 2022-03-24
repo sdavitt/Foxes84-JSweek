@@ -11,21 +11,28 @@
       "a7 a8 a9";
   }
   
-  .a1 { grid-area: a1; }
+  .a1 { grid-area: a1; position: relative; }
   
-  .a2 { grid-area: a2; }
+  .a2 { grid-area: a2; position: relative; }
   
-  .a3 { grid-area: a3; }
+  .a3 { grid-area: a3; position: relative; }
   
-  .a4 { grid-area: a4; }
+  .a4 { grid-area: a4; position: relative; }
   
-  .a5 { grid-area: a5; }
+  .a5 { grid-area: a5; position: relative; }
   
-  .a6 { grid-area: a6; }
+  .a6 { grid-area: a6; position: relative; }
   
-  .a7 { grid-area: a7; }
+  .a7 { grid-area: a7; position: relative; }
   
-  .a8 { grid-area: a8; }
+  .a8 { grid-area: a8; position: relative; }
   
-  .a9 { grid-area: a9; }
+  .a9 { grid-area: a9; position: relative; }
   
+
+  .playbtn {
+      position: absolute;
+      bottom: 1em;
+      left: 50%;
+      transform: translateX(-50%);
+  }
