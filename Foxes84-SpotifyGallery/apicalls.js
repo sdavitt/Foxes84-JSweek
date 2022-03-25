@@ -36,15 +36,15 @@ const getSong = async (songname, artist, token) => {
 // set up my array of songs as a global variable
 // here it is just declared globally
 // so I can use and access this music variable from any function
-let music = [{ track: 'Coffee', artist: 'Sylvan Esso' },
-{ track: 'Skin', artist: 'Dijon' },
-{ track: 'Hey Mami', artist: 'Sylvan Esso' },
-{ track: 'New York', artist: 'Trettman' },
-{ track: 'Pink Skies', artist: 'Wiley from Atlanta' },
-{ track: 'Leftovers', artist: 'Dennis Lloyd' },
-{ track: 'From Eden', artist: 'Hozier' },
-{ track: 'The Devil Wears a Suit and Tie', artist: 'Colter Wall' },
-{ track: 'American Boy', artist: 'Estelle' }];
+let music = [{id: 0, track: 'Coffee', artist: 'Sylvan Esso' },
+{id: 1, track: 'Skin', artist: 'Dijon' },
+{id: 2, track: 'Hey Mami', artist: 'Sylvan Esso' },
+{id: 3, track: 'New York', artist: 'Trettman' },
+{id: 4, track: 'Pink Skies', artist: 'Wiley from Atlanta' },
+{id: 5, track: 'Leftovers', artist: 'Dennis Lloyd' },
+{id: 6, track: 'From Eden', artist: 'Hozier' },
+{id: 7, track: 'The Devil Wears a Suit and Tie', artist: 'Colter Wall' },
+{id: 8, track: 'American Boy', artist: 'Estelle' }];
 // global playing variable - keeps track of what music is currently playing (if any)
 let playing;
 let stopbtn = document.getElementById('stopbtn');
@@ -89,6 +89,8 @@ let clickEvent = (id) => {
         else {
             // pause that song and continue on to start playing the new one
             playing.preview_url.pause();
+            let playingbtn = document.getElementById(`playbtn${playing.id}`);
+            playingbtn.innerHTML = 'Play';
         }
     }
     // play the audio
@@ -96,6 +98,9 @@ let clickEvent = (id) => {
     track.preview_url.play();
     // update our currently playing track global variable
     playing = track;
+    // modify the play button to a pause button
+    let playingbtn = document.getElementById(`playbtn${playing.id}`);
+    playingbtn.innerHTML = 'Pause';
     // modify the stopbtn to be a pause button
     stopbtn.disabled = false;
     stopbtn.innerHTML = 'Pause';
@@ -107,21 +112,21 @@ let clickEvent = (id) => {
 let pauseTrack = () => {
     console.log('Paused...');
     playing.preview_url.pause();
+    let playingbtn = document.getElementById(`playbtn${playing.id}`);
+    playingbtn.innerHTML = 'Play';
     stopbtn.disabled = true;
     stopbtn.innerHTML = 'Click an album cover to hear a song preview!';
     headertitle.innerHTML = 'Foxes 84 | SpotifyAPI Music'
 }
 
 let btnShow = (id) => {
-    console.log('showing');
-    let btn = document.getElementById(`playbtn${id}`);
+    let btn = document.getElementById(`playbtn${id[7]}`);
     btn.hidden = false;
 }
 
 // trigger: onmouseleave="btnHide(this.id);"
 // issue: infinite loop showing and hiding button due to mouse hovering and leaving the img
 let btnHide = (id) => {
-    console.log('hiding');
-    let btn = document.getElementById(`playbtn${id}`);
+    let btn = document.getElementById(`playbtn${id[7]}`);
     btn.hidden = true;
 }
